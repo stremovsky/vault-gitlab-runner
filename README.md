@@ -4,7 +4,9 @@
 ## Setup
 
 ```
-echo "10.10.10.10 vault-server" >> /etc/hosts
+if ! grep -q "vault" "/etc/hosts"; then
+  echo "10.10.10.10 vault-server" >> /etc/hosts
+fi
 export VAULT_ADDR=http://vault-server
 export VAULT_TOKEN=token
 ```
