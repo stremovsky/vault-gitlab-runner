@@ -17,7 +17,6 @@ export VAULT_TOKEN=token
 OUT=$(VAULT_FORMAT=json vault write generic-ssh/issue/root-user-sign-role key_type=ed25519 valid_principals=root)
 echo $OUT | jq -rc '.data.private_key' > ./private
 echo $OUT | jq -rc '.data.signed_key' > ./signedkey.pub
-chmod 400 ./private ./signedkey.pub"
+chmod 400 ./private ./signedkey.pub
 echo "ssh -i ./private -i ./signedkey.pub ubuntu@target-ip"
 ```
-
